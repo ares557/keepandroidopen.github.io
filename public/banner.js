@@ -74,15 +74,21 @@
   // ── Determine locale ──────────────────────────────────────────────────
   function resolveLocale(tag) {
     if (!tag) return "en";
+    // Exact match
     if (messages[tag]) return tag;
+    // Case-insensitive exact match (e.g. "pt-br" → "pt-BR")
     var lower = tag.toLowerCase();
     for (var key in messages) {
       if (key.toLowerCase() === lower) return key;
     }
-    var base = tag.split("-")[0].toLowerCase();
-    if (messages[base]) return base;
+    // Fallback to base language (e.g. "de-CH" → "de", "zh-Hans" → "zh")
+    var base = lower.split("-")[0];
     for (var key2 in messages) {
-      if (key2.toLowerCase().split("-")[0] === base) return key2;
+      if (key2.toLowerCase() === base) return key2;
+    }
+    // Fallback to any regional variant of the base language (e.g. "pt" → "pt-BR")
+    for (var key3 in messages) {
+      if (key3.toLowerCase().split("-")[0] === base) return key3;
     }
     return "en";
   }
