@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
   pull_request:
+  schedule:
+    # Rebuild twice daily to refresh randomized quote ordering and countdown
+    - cron: '0 6,18 * * *'
 
 permissions:
   contents: read

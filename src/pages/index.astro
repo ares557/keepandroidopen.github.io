@@ -1,17 +1,1251 @@
 ---
-import { getCollection } from 'astro:content';
-import Default from '../layouts/Default.astro';
-import SharedLinks from '../components/SharedLinks.astro';
-import Regulators from '../components/Regulators.astro';
+import Base from '../layouts/Base.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import signatures from '../data/signatures.yaml';
+import techPressQuotes from '../data/quotes/tech-press.yaml';
+import editorialQuotes from '../data/quotes/editorials.yaml';
+import orgQuotes from '../data/quotes/organizations.yaml';
+import creatorQuotes from '../data/quotes/creators.yaml';
+import communityQuotes from '../data/quotes/community.yaml';
 
-const pages = await getCollection('pages');
-const entry = pages.find((p) => p.slug === 'en');
-if (!entry) throw new Error('English content not found');
-const { Content } = await entry.render();
-const { data } = entry;
+// Fisher-Yates shuffle for build-time randomization
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+const pressItems = shuffle(techPressQuotes);
+const editorialItems = shuffle(editorialQuotes);
+const orgItems = shuffle(orgQuotes);
+const creatorItems = shuffle(creatorQuotes);
+const communityItems = shuffle(communityQuotes);
+
+// Convert ISO 3166-1 alpha-2 code to flag emoji (e.g. "US" → 🇺🇸)
+function regionFlag(code?: string): string {
+  if (!code || code.length !== 2) return "\u{1F310}";
+  return String.fromCodePoint(
+    ...code.toUpperCase().split("").map(c => 0x1F1E6 + c.charCodeAt(0) - 65)
+  );
+}
+
+const svgLogos = new Set(["appfair.org", "auroraoss.com", "guardianproject.info", "fastmail.com", "jmp.chat", "kde.org", "osmfoundation.org", "molly.im"]);
+function logoPath(url: string): string {
+  const ext = svgLogos.has(url) ? "svg" : "png";
+  return `/img/logos/${url}.${ext}`;
+}
+
+const title = "Keep Android Open";
+const lang = "en";
+const description = "Your phone is about to stop being yours. In September 2026, Google will block every Android app whose developer hasn't registered with them.";
+
+// countdown
+const deadline = new Date('2026-09-01T00:00:00Z');
+const now = new Date();
+const daysLeft = Math.max(0, Math.ceil((deadline.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)));
 ---
-<Default {...data}>
-  <Content />
-  <Regulators locale="en" />
-  <SharedLinks locale="en" />
-</Default>
+<Base title={title} lang={lang} description={description}>
+  <nav class="topbar">
+    <ThemeToggle />
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section id="top" class="hero">
+      <p class="hero-lede">
+        Your phone is about to stop being yours.
+      </p>
+      <div class="countdown-strip">
+        <span class="countdown-number">{daysLeft}</span>
+        <span class="countdown-label">days until lockdown</span>
+      </div>
+      <p class="hero-sub">
+      Starting September 2026, a silent update, nonconsensually pushed by Google, will <strong>block every Android app</strong> whose developer hasn't registered with Google, signed their contract, paid up, and handed over government ID.
+      </p>
+      <p class="hero-sub hero-kicker">
+      Every app and every device, worldwide, with no opt-out.
+      </p>
+      <a href="#what" class="scroll-cue" aria-label="Read more">&#8595;</a>
+    </section>
+
+    <!-- What's happening -->
+    <section id="what">
+      <h2>What Google is doing</h2>
+      <p>
+      In August 2025, Google <a href="https://developer.android.com/developer-verification" target="_blank">announced &#8599;</a> a new requirement: starting September 2026, <strong>every Android app developer must register centrally with Google</strong> before their software can be installed on any device. Not just Play Store apps: all apps. This includes apps shared between friends, distributed through <a href="https://f-droid.org" target="_blank">F-Droid &#8599;</a>, built by hobbyists for personal use. Independent developers, church and community groups, and hobbyists alike will all be frozen out of being able to develop and distribute their software.
+      </p>
+      <p>Registration requires:</p>
+      <ul>
+        <li class="li-list li-money">Paying a fee to Google</li>
+        <li class="li-list li-terms">Agreeing to Google's Terms and Conditions</li>
+        <li class="li-list li-id">Surrendering your government-issued identification</li>
+        <li class="li-list li-signing">Providing evidence of your private signing key</li>
+        <li class="li-list li-appids">Listing all current and all future application identifiers</li>
+      </ul>
+      <p class="pull-quote">
+        If a developer does not comply, their apps get silently blocked on every Android device worldwide.
+      </p>
+    </section>
+
+    <!-- Who gets hurt -->
+    <section id="impact">
+      <h2>Who this hurts</h2>
+
+      <div class="impact-cards">
+        <div class="impact-card impact-consumer">
+          <h3>You</h3>
+          <p>
+          You bought an Android phone because Google told you it was open. You could install what you wanted, and that was the deal.
+          </p>
+          <p>
+          Google is now rewriting that deal, retroactively, on hardware you already own. After the update lands, you can only run software that Google has pre-approved. On your phone: <i>your</i> property, that <i>you</i> paid for.
+          </p>
+        </div>
+
+        <div class="impact-card impact-dev">
+          <h3>Independent developers</h3>
+          <p>
+          A teenager's first app, a volunteer's privacy tool, or a company's confidential internal beta. It doesn't matter. After September 2026, none of these can be installed without Google's blessing.
+          </p>
+          <p>
+            <a href="https://f-droid.org" target="_blank">F-Droid &#8599;</a>, home to thousands of free and open-source Android apps, has called this an <a href="https://f-droid.org/en/2025/09/29/google-developer-registration-decree.html" target="_blank">"existential" threat &#8599;</a>. Cory Doctorow calls it <a href="https://pluralistic.net/2025/09/01/fulu/" target="_blank">"Darth Android" &#8599;</a>.
+          </p>
+        </div>
+
+        <div class="impact-card impact-gov">
+          <h3>Governments &amp; civil society</h3>
+          <p>
+            Google has a <a href="https://www.aclu.org/news/free-speech/app-store-oligopoly" target="_blank">documented track record &#8599;</a> of complying when authoritarian regimes demand app removals. With this program, the software that runs your country's institutions will exist at the pleasure of a single unaccountable foreign corporation.
+          </p>
+          <p>
+            The <a href="https://www.eff.org/deeplinks/2025/11/application-gatekeeping-ever-expanding-pathway-internet-censorship" target="_blank">EFF calls &#8599;</a> app gatekeeping "an ever-expanding pathway to internet censorship."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The "solution" that isn't -->
+    <section id="advanced-flow">
+      <div class="callout-warning">
+        <h3>Google's "escape hatch" is a trap door</h3>
+        <p>
+        Google says "power users" can <a href="https://android-developers.googleblog.com/2026/03/android-developer-verification.html" target="_blank">"still install"</a> unverified apps. Here's what that <i>actually</i> looks like:
+        </p>
+        <ol class="scare-steps">
+          <li>Tap the build number <strong>seven times</strong> to enable Developer Mode</li>
+          <li>Dig into Developer Options, find a buried toggle</li>
+          <li>Dismiss a scare screen about coercion</li>
+          <li>Enter your PIN</li>
+          <li>Restart the device</li>
+          <li class="step-highlight"><strong>Wait 24 hours</strong></li>
+          <li>Come back, dismiss more scare screens</li>
+          <li>Pick "allow temporarily" (7 days) or "allow indefinitely"</li>
+          <li>Confirm, again, that you understand "the risks"</li>
+        </ol>
+        <p>
+          Nine steps. A mandatory 24-hour cooling-off period. <em>For installing software on a device you own.</em>
+        </p>
+        <p>
+          Worse: this flow runs entirely through <strong>Google Play Services</strong>, not the Android OS. Google can change it, tighten it, or kill it at any time, with no OS update required and no consent needed. And as of today, it hasn't shipped in any beta, preview, or canary build. It exists only as a blog post and some mockups.
+        </p>
+      </div>
+    </section>
+
+    <!-- Why you should care -->
+    <section id="precedent" class="precedent-section">
+      <h2>This is bigger than Android</h2>
+
+      <p class="pull-quote">
+        If Google can retroactively lock down billions of devices that were sold as open platforms, every hardware manufacturer on the planet is watching.
+      </p>
+
+      <p>
+      The principle being established: <strong>the company that made your device gets to decide, after you've bought it, what software you're allowed to run.</strong> In software, this is called a "rug pull"; but at least you could always install competing software. In hardware, it is a <i>fait accompli</i> that strips you of your agency and renders you powerless to the whims of a single unaccountable gatekeeper and convicted monopolist.
+      </p>
+      <p>
+      Android's openness was never just a feature. It was the <em>promise</em> that distinguished it from iPhone. Millions chose Android for exactly that reason. Google is now revoking that promise unilaterally, on devices <i>already</i> in people's pockets, because they've decided they have enough market dominance and regulatory capture to get away with it.
+      </p>
+      <p>
+        <a href="https://arstechnica.com/gadgets/2026/03/with-developer-verification-googles-apple-envy-threatens-to-dismantle-androids-open-legacy/" target="_blank">Ars Technica &#8599;</a>: <em>"Google's Apple envy threatens to dismantle Android's open legacy."</em>
+      </p>
+    </section>
+
+    <!-- Objections addressed -->
+    <section id="objections" class="objections-section">
+      <h2>But wait, isn't this...</h2>
+
+      <details open>
+        <summary><h4>"...just about security?"</h4></summary>
+        <p>
+          The security rationale is a smokescreen. Google Play Protect already scans for malware independent of developer identity. Requiring a government ID doesn't make code safer. It makes <em>developers</em> identifiable and controllable. Malware authors can register. Indie developers and dissidents often can't. The <a href="https://www.eff.org/deeplinks/2025/11/application-gatekeeping-ever-expanding-pathway-internet-censorship" target="_blank">EFF &#8599;</a> is blunt: identity-based gatekeeping is a censorship tool, not a security one.
+        </p>
+      </details>
+
+      <details open>
+        <summary><h4>"...still sideloading if you use the advanced flow?"</h4></summary>
+        <p>
+          Nine steps, 24-hour wait, buried in Developer Options, delivered through a proprietary service that Google can revoke whenever they want. That's not sideloading. That's a <strong>deterrence mechanism</strong> built to ensure almost nobody completes it. And since it runs through Play Services rather than the OS, Google can tighten or kill it silently.
+        </p>
+      </details>
+
+      <details open>
+        <summary><h4>"...only a problem if you have something to hide?"</h4></summary>
+        <p>
+        Whistleblowers, journalists, and activists under authoritarian governments will be the first victims. People in domestic abuse situations are next. All these groups have legitimate reasons to distribute or use software without putting their legal identity in a Google database. Anonymous open-source contribution is a tradition older than Google itself. This policy ends it on Android.
+        </p>
+      </details>
+
+      <details open>
+        <summary><h4>"...the same thing Apple does?"</h4></summary>
+        <p>
+        Apple has been a walled garden from day one. People chose Android <em>because it was different</em>. "Apple does it too" is a race to the bottom and a weak <i>tu quoque</i> argument. And under regulatory pressure (the EU's Digital Markets Act), even Apple is being forced to open up. Google is moving in the opposite direction: attempting to further entrench its gatekeeping status.
+        </p>
+      </details>
+
+      <details open>
+        <summary><h4>"...just $25 and some paperwork?"</h4></summary>
+        <p>
+          Maybe, if you're a developer in the US with a credit card and a driver's license. Try being a student in sub-Saharan Africa, or a dissident in Myanmar, or a volunteer maintaining a community health app. The cost isn't only financial: you're surrendering government ID and evidence or your signing keys to a company that <a href="https://www.theregister.com/2025/08/26/android_developer_verification_sideloading/" target="_blank">routinely complies &#8599;</a> with government demands to remove apps and expose developers.
+        </p>
+      </details>
+    </section>
+
+    <!-- What you can do -->
+    <section id="act" class="action-section">
+      <h2 id="help">Fight back</h2>
+
+      <div class="action-block">
+        <h3 id="everyone">Everyone</h3>
+        <ul>
+          <li><strong><a href="https://f-droid.org" target="_blank">Install F-Droid &#8599;</a></strong> on every Android device you own. Alternative stores only survive if people actually use them.</li>
+          <li><strong><a href="/cta/#consumers">Contact your regulators.</a></strong> Regulators worldwide are genuinely concerned about monopolies and the centralization of power in the tech sector, and want to hear directly from individuals who are affected and concerned.
+          <li><strong>Share this page.</strong> Link to <a href="https://keepandroidopen.org">keepandroidopen.org</a> everywhere.</li>
+          <li><strong>Push back on astroturfers.</strong> The "well, actually..." crowd is out in force. Don't let them set the narrative.</li>
+          <li><strong><a href="https://www.change.org/p/stop-google-from-limiting-apk-file-usage/" target="_blank">Sign the change.org petition &#8599;</a></strong> and join the over 100,000 signatories who have made their voices heard.</li>
+          <li><strong><a href="/open-letter">Read and share our open letter</a></strong></li>
+          <li><strong>Tell Google what you think of this</strong> through their own <a href="https://docs.google.com/forms/d/e/1FAIpQLSfN3UQeNspQsZCO2ITkdzMxv81rJDEGGjO-UIDDY28Rz_GEVA/viewform?pli=1" target="_blank">developer verification survey &#8599;</a> <small>(for all the good that will do)</small>.</li>
+        </ul>
+      </div>
+
+      <div class="action-block action-dev-block">
+        <h3 id="developers">Developers</h3>
+        <p>
+        <strong style="text-transform: uppercase;">Do not sign up.</strong> Don't join the program by signing up for the Android Developer Console and agreeing to their irrevocable Terms and Conditions. Don't verify your identity. <i>Don't play ball.</i>
+        </p>
+        <p class="callout-resist">
+          Google's plan only works if developers comply. Don't.
+        </p>
+        <ul>
+          <li>Talk other developers and organizations out of signing up.</li>
+          <li>Add the <a href="https://github.com/woheller69/FreeDroidWarn" target="_blank">FreeDroidWarn library &#8599;</a> to your apps to warn users.</li>
+          <li>Run a website? <a href="/banner">Add the countdown banner.</a></li>
+        </ul>
+      </div>
+
+      <div class="action-block">
+        <h3>Google employees</h3>
+        <p>
+          If you know something about the program's technical implementation or internal rationale, contact <a href="mailto:tips@keepandroidopen.org">tips@keepandroidopen.org</a> from a <em>non-work</em> machine and a <em>non-Gmail</em> account. Strict confidence guaranteed.
+        </p>
+      </div>
+    </section>
+
+    <!-- Press and coverage -->
+    <section id="voices" class="voices-section">
+      <h2>What they're saying</h2>
+
+      <h3 class="voices-category">Tech press</h3>
+      <div class="press-grid">
+        {pressItems.map((item: any) => (
+          <blockquote>
+            <p>"{item.quote}"</p>
+            <cite>{item.author && <>{item.author}, </>}<a href={item.url} target="_blank">{item.source} &#8599;</a></cite>
+          </blockquote>
+        ))}
+      </div>
+
+      <h3 class="voices-category">Editorials &amp; analysis</h3>
+      <div class="press-grid press-grid-featured">
+        {editorialItems.map((item: any) => (
+          <blockquote class="featured-quote">
+            <p>"{item.quote}"</p>
+            <cite>{item.author && <>{item.author}, </>}<a href={item.url} target="_blank">{item.source} &#8599;</a></cite>
+          </blockquote>
+        ))}
+      </div>
+
+      <h3 class="voices-category">Organizations &amp; open letters</h3>
+      <div class="press-grid press-grid-featured">
+        {orgItems.map((item: any) => (
+          <blockquote class="featured-quote org-quote">
+            <p>"{item.quote}"</p>
+            <cite><a href={item.url} target="_blank">{item.source} &#8599;</a></cite>
+          </blockquote>
+        ))}
+      </div>
+
+      <h3 class="voices-category">YouTubers &amp; creators</h3>
+      <div class="video-quotes">
+        {creatorItems.map((item: any) => (
+          <blockquote class="video-quote">
+            <p>"{item.quote}"</p>
+            <cite>{item.author} &ndash; <a href={item.url} target="_blank">{item.link_text || 'YouTube'} &#8599;</a></cite>
+          </blockquote>
+        ))}
+      </div>
+
+      <h3 class="voices-category">Developers &amp; community</h3>
+      <div class="video-quotes">
+        {communityItems.map((item: any) => (
+          <blockquote class="video-quote community-quote">
+            <p>"{item.quote}"</p>
+            <cite>{item.author}{item.author_note && <> ({item.author_note})</>}, <a href={item.url} target="_blank">{item.source} &#8599;</a></cite>
+          </blockquote>
+        ))}
+      </div>
+
+      <p style="text-align:center; margin-top: 2rem;">
+        <a href="/cta/" class="more-link">All references, editorials, press coverage, and videos &rarr;</a>
+      </p>
+    </section>
+
+
+    <!-- Signatories -->
+    <section id="signatories" class="signatories-landing">
+      <div class="sig-rule"></div>
+      <h2>All those opposed&hellip;</h2>
+      <p class="sig-count">{signatures.length} organizations from {new Set(signatures.map((s: any) => s.region).filter(Boolean)).size} countries have signed the <a href="/open-letter">open letter</a></p>
+      <ol class="sig-list">
+        {signatures.map((sig: any) => (
+          <li>
+            <img class="sig-logo" src={logoPath(sig.url)} alt={`${sig.organization} logo`} loading="lazy" />
+            <div class="sig-details">
+              <span class="sig-name">{sig.organization}</span>
+              <span class="sig-links">
+                <a target="_blank" href={`https://${sig.url}`}>{sig.url}<span class="sig-flag">{regionFlag(sig.region)}</span></a>
+              </span>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- CTA banner -->
+    <section id="take-action" class="cta-banner">
+      <a href="/cta/" class="cta-banner-link">
+        <span class="cta-banner-label">Take Action</span>
+        <span class="cta-banner-desc">Full resource list, regulator contacts, links for every country, and how to fight back</span>
+        <span class="cta-banner-arrow">&rarr;</span>
+      </a>
+      <a href="/open-letter" class="cta-banner-link cta-banner-link-alt">
+        <span class="cta-banner-label">Open Letter</span>
+        <span class="cta-banner-desc">Read the open letter signed by organizations opposing developer verification</span>
+        <span class="cta-banner-arrow">&rarr;</span>
+      </a>
+    </section>
+
+    <!-- Closing -->
+    <section id="share" class="closing">
+      <p class="closing-lede">
+        You bought your phone.<br>
+        You should decide what runs on it.
+      </p>
+      <p>
+        That shouldn't require a 9-step process, a 24-hour wait, and Google's ongoing permission.
+      </p>
+      <p class="closing-cta">
+        <strong>Share this page. Don't sign up. Don't let them close Android.</strong>
+      </p>
+    </section>
+  </main>
+
+  <footer class="landing-footer">
+    <div class="landing-footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="outerlync">
+          <img class="innerlync" alt="Altered Deal Logo" src="/img/altered-deal.png" style="width: 150px;">
+        </a>
+        <h2 class="footer-title">Keep Android Open</h2>
+        <div class="footer-social">
+          <a href="https://techhub.social/@keepandroidopen" aria-label="Mastodon" title="Mastodon" rel="me" target="_blank"><span class="social-icon icon-mastodon" style="width:24px;height:24px"></span></a>
+          <a href="https://bsky.app/profile/keepandroidopen.bsky.social" aria-label="BlueSky" title="BlueSky" target="_blank"><span class="social-icon icon-bluesky" style="width:24px;height:24px"></span></a>
+          <a href="https://x.com/AlteredDeal" aria-label="Twitter" title="Twitter" target="_blank"><span class="social-icon icon-x" style="width:24px;height:24px"></span></a>
+          <a href="https://linkedin.com/company/keepandroidopen" aria-label="LinkedIn" title="LinkedIn" target="_blank"><span class="social-icon icon-linkedin" style="width:24px;height:24px"></span></a>
+        </div>
+      </div>
+      <div class="footer-links-row">
+        <div class="footer-col">
+          <h4>Get involved</h4>
+          <ul>
+            <li><a href="/cta/">Take action &amp; resources</a></li>
+            <li><a href="/open-letter">Open letter</a></li>
+            <li><a href="/banner">Add countdown banner</a></li>
+            <li><a href="https://www.change.org/p/stop-google-from-limiting-apk-file-usage/" target="_blank">Sign the petition &#8599;</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@keepandroidopen.org">info@keepandroidopen.org</a></li>
+            <li><a href="mailto:tips@keepandroidopen.org">tips@keepandroidopen.org</a></li>
+            <li><a href="https://github.com/keepandroidopen/keepandroidopen.github.io/issues" target="_blank">Report site issues &#8599;</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Translations</h4>
+          <ul>
+            <li><a href="/cta/">English (+ 30 languages)</a></li>
+            <li><a href="https://github.com/keepandroidopen/keepandroidopen.github.io/blob/main/src/content/pages/en/index.md" target="_blank">Help translate &#8599;</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <p><strong>Disclaimer:</strong> This website is a community-driven noncommercial undertaking. It is operated solely for informational and educational purposes.</p>
+        <p><strong>Privacy:</strong> This site uses no cookies and performs no user tracking or logging.</p>
+        <p><strong>Copyright:</strong> None: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a><img src="/img/cc.svg" alt="CC0" style="max-width: 1em; max-height: 1em; margin-left: .2em;"><img src="/img/zero.svg" alt="Zero" style="max-width: 1em; max-height: 1em; margin-left: .2em;"></p>
+      </div>
+    </div>
+  </footer>
+
+  <style is:global>
+    /* ===== TOPBAR ===== */
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0.75rem 1.5rem;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 3rem 0 1rem;
+      margin-bottom: 0;
+      position: relative;
+    }
+
+    .hero-lede {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #d32f2f 0%, #ff6659 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    [data-theme="dark"] .hero-lede {
+      background: linear-gradient(135deg, #ff6659 0%, #ff8a80 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      max-width: 660px;
+      margin: 1.5rem auto 0;
+      line-height: 1.65;
+      color: var(--pico-muted-color);
+    }
+
+    .hero-kicker {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--pico-color);
+      -webkit-text-fill-color: initial;
+      margin-top: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    [data-theme="dark"] .hero-kicker {
+      color: #fff;
+    }
+
+    /* ===== COUNTDOWN ===== */
+    .countdown-strip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+      padding: 1.5rem 2.5rem;
+      background: linear-gradient(135deg, #b71c1c, #d32f2f, #e53935);
+      background-size: 200% 200%;
+      animation: pulse-bg 4s ease-in-out infinite;
+      border-radius: 1rem;
+      color: #fff;
+      max-width: 340px;
+      margin: 0 auto;
+      box-shadow: 0 8px 32px rgba(211, 47, 47, 0.3);
+    }
+
+    @keyframes pulse-bg {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .countdown-number {
+      font-size: clamp(3rem, 8vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .countdown-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.9;
+    }
+
+    /* ===== SCROLL CUE ===== */
+    .scroll-cue {
+      display: inline-block;
+      margin-top: 2rem;
+      font-size: 2rem;
+      color: var(--pico-muted-color);
+      text-decoration: none;
+      animation: bob 2s ease-in-out infinite;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+
+    .scroll-cue:hover {
+      opacity: 1;
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* ===== PULL QUOTES ===== */
+    .pull-quote {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.4;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      border-inline-start: 4px solid #d32f2f;
+      background: rgba(211, 47, 47, 0.05);
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    [data-theme="dark"] .pull-quote {
+      background: rgba(211, 47, 47, 0.12);
+    }
+
+    /* ===== SECTION HEADERS ===== */
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      border-bottom: 3px solid;
+      border-image: linear-gradient(90deg, #d32f2f, transparent) 1;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    section h3 {
+      margin-top: 1.5rem;
+    }
+
+    /* ===== IMPACT CARDS ===== */
+    .impact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .impact-card {
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      border-top: 4px solid;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .impact-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="dark"] .impact-card:hover {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .impact-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }
+
+    .impact-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .impact-consumer {
+      border-color: #d32f2f;
+      background: rgba(211, 47, 47, 0.04);
+    }
+
+    .impact-dev {
+      border-color: #f57c00;
+      background: rgba(245, 124, 0, 0.04);
+    }
+
+    .impact-gov {
+      border-color: #7b1fa2;
+      background: rgba(123, 31, 162, 0.04);
+    }
+
+    [data-theme="dark"] .impact-consumer {
+      background: rgba(211, 47, 47, 0.1);
+    }
+
+    [data-theme="dark"] .impact-dev {
+      background: rgba(245, 124, 0, 0.1);
+    }
+
+    [data-theme="dark"] .impact-gov {
+      background: rgba(123, 31, 162, 0.1);
+    }
+
+    /* ===== SCARE STEPS ===== */
+    .scare-steps {
+      counter-reset: scare;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .scare-steps li {
+      counter-increment: scare;
+      padding: 0.5rem 0.75rem 0.5rem 3rem;
+      position: relative;
+      margin-bottom: 0.35rem;
+      border-radius: 0.35rem;
+      transition: background 0.15s;
+    }
+
+    .scare-steps li::before {
+      content: counter(scare);
+      position: absolute;
+      left: 0.5rem;
+      top: 0.5rem;
+      width: 1.75rem;
+      height: 1.75rem;
+      background: rgba(211, 47, 47, 0.12);
+      color: #d32f2f;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    [data-theme="dark"] .scare-steps li::before {
+      background: rgba(239, 83, 80, 0.2);
+      color: #ef5350;
+    }
+
+    .step-highlight {
+      background: rgba(211, 47, 47, 0.08);
+      font-weight: 600;
+    }
+
+    [data-theme="dark"] .step-highlight {
+      background: rgba(211, 47, 47, 0.15);
+    }
+
+    /* ===== PRECEDENT SECTION ===== */
+    .precedent-section {
+      position: relative;
+      padding: 2rem;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, rgba(26, 26, 46, 0.03), rgba(22, 33, 62, 0.06));
+      border: 1px solid rgba(52, 152, 219, 0.15);
+    }
+
+    [data-theme="dark"] .precedent-section {
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.06), rgba(52, 152, 219, 0.02));
+      border-color: rgba(52, 152, 219, 0.2);
+    }
+
+    /* ===== OBJECTIONS ===== */
+    .objections-section details {
+      margin-bottom: 0.5rem;
+      border: 1px solid var(--pico-muted-border-color);
+      border-radius: 0.5rem;
+      padding: 0 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .objections-section details:hover {
+      border-color: #d32f2f;
+    }
+
+    .objections-section details[open] {
+      border-color: #d32f2f;
+      box-shadow: 0 2px 12px rgba(211, 47, 47, 0.08);
+    }
+
+    [data-theme="dark"] .objections-section details[open] {
+      box-shadow: 0 2px 12px rgba(211, 47, 47, 0.15);
+    }
+
+    .objections-section summary {
+      padding: 0.75rem 0;
+    }
+
+    .objections-section details > p {
+      padding-inline-start: 0;
+      padding-bottom: 1rem;
+    }
+
+    .objections-section summary h4 {
+      font-style: italic;
+      color: var(--pico-muted-color);
+    }
+
+    /* ===== ACTION SECTION ===== */
+    .action-section .action-block {
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 0.75rem;
+      background: rgba(52, 152, 219, 0.04);
+      border-left: 3px solid #3498db;
+    }
+
+    [data-theme="dark"] .action-section .action-block {
+      background: rgba(52, 152, 219, 0.08);
+    }
+
+    .action-dev-block {
+      border-left-color: #f57c00 !important;
+      background: rgba(245, 124, 0, 0.04) !important;
+    }
+
+    [data-theme="dark"] .action-dev-block {
+      background: rgba(245, 124, 0, 0.08) !important;
+    }
+
+    .action-block h3 {
+      margin-top: 0;
+    }
+
+    .callout-resist {
+      text-align: center;
+      font-size: 1.15rem;
+      font-weight: 800;
+      padding: 0.85rem 1rem;
+      margin: 1rem 0;
+      background: linear-gradient(135deg, rgba(211, 47, 47, 0.06), rgba(211, 47, 47, 0.12));
+      border-radius: 0.5rem;
+      color: #d32f2f;
+    }
+
+    [data-theme="dark"] .callout-resist {
+      background: linear-gradient(135deg, rgba(239, 83, 80, 0.1), rgba(239, 83, 80, 0.18));
+      color: #ef5350;
+    }
+
+    /* ===== PRESS GRID ===== */
+    .press-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .press-grid blockquote {
+      margin: 0;
+      padding: 1.25rem 1.25rem 1rem;
+      border-inline-start: 3px solid #3498db;
+      background: rgba(52, 152, 219, 0.04);
+      border-radius: 0 0.5rem 0.5rem 0;
+      font-size: 0.95rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .press-grid blockquote:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    [data-theme="dark"] .press-grid blockquote {
+      background: rgba(52, 152, 219, 0.1);
+    }
+
+    [data-theme="dark"] .press-grid blockquote:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .press-grid blockquote p {
+      margin-bottom: 0.75rem;
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .press-grid blockquote cite {
+      font-size: 0.8rem;
+      font-style: normal;
+      opacity: 0.7;
+    }
+
+    .more-link {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    /* ===== VOICES SECTION ===== */
+    .voices-category {
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--pico-muted-color);
+      border-bottom: none;
+    }
+
+    .voices-category:first-of-type {
+      margin-top: 0.5rem;
+    }
+
+    /* ===== FEATURED QUOTES ===== */
+    .press-grid-featured blockquote {
+      border-inline-start-width: 4px;
+    }
+
+    .featured-quote p {
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+
+    /* ===== ORG QUOTES ===== */
+    .org-quote {
+      border-inline-start-color: #7b1fa2 !important;
+      background: rgba(123, 31, 162, 0.04) !important;
+    }
+
+    [data-theme="dark"] .org-quote {
+      background: rgba(123, 31, 162, 0.1) !important;
+    }
+
+    /* ===== VIDEO QUOTES ===== */
+    .video-quotes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .video-quote {
+      margin: 0;
+      padding: 1rem 1.5rem;
+      border-inline-start: 4px solid #d32f2f;
+      background: rgba(211, 47, 47, 0.03);
+      border-radius: 0 0.5rem 0.5rem 0;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .video-quote:hover {
+      transform: translateX(4px);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    [data-theme="dark"] .video-quote {
+      background: rgba(211, 47, 47, 0.08);
+    }
+
+    [data-theme="dark"] .video-quote:hover {
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .video-quote p {
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+
+    .video-quote cite {
+      font-size: 0.85rem;
+      font-style: normal;
+      font-weight: 600;
+      opacity: 0.75;
+    }
+
+    /* ===== COMMUNITY QUOTES ===== */
+    .community-quote {
+      border-inline-start-color: #f57c00;
+      background: rgba(245, 124, 0, 0.03);
+    }
+
+    [data-theme="dark"] .community-quote {
+      background: rgba(245, 124, 0, 0.07);
+    }
+
+    .community-quote p {
+      font-style: normal;
+    }
+
+    /* ===== SIGNATORIES ===== */
+    .signatories-landing {
+      margin-bottom: 3rem;
+    }
+
+    .sig-rule {
+      border: none;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #333, transparent);
+      margin: 0 auto;
+    }
+
+    [data-theme="dark"] .sig-rule {
+      background: linear-gradient(90deg, transparent, #aaa, transparent);
+    }
+
+    .signatories-landing h2 {
+      text-align: center;
+      text-transform: uppercase;
+      font-variant: small-caps;
+      letter-spacing: 0.25em;
+      font-weight: 900;
+      font-size: 1.6rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.25rem;
+      border-bottom: none;
+      border-image: none;
+    }
+
+    .sig-count {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.8rem;
+      opacity: 0.5;
+      margin-top: 0;
+      margin-bottom: 2rem;
+    }
+
+    .sig-count a {
+      text-transform: none;
+      letter-spacing: normal;
+    }
+
+    .sig-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto 2rem;
+      columns: 1;
+    }
+
+    @media (min-width: 900px) {
+      .sig-list {
+        columns: 2;
+        column-gap: 2rem;
+      }
+    }
+
+    .signatories-landing li {
+      display: flex;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+      break-inside: avoid;
+    }
+
+    .signatories-landing li:last-child {
+      border-bottom: none;
+      padding-bottom: 1.5rem;
+    }
+
+    .sig-logo {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      object-fit: contain;
+      margin-inline-end: 0.75rem;
+      border-radius: 4px;
+    }
+
+    .sig-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      min-width: 0;
+    }
+
+    .sig-name {
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 0.01em;
+    }
+
+    .sig-flag {
+      margin-inline-start: 0.4em;
+      font-size: 0.85em;
+      vertical-align: middle;
+    }
+
+    .sig-details a {
+      font-size: 0.8rem;
+      opacity: 0.5;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .sig-details a:hover {
+      opacity: 0.8;
+    }
+
+    .sig-links {
+      display: flex;
+      align-items: center;
+      gap: 0.3em;
+      flex-wrap: wrap;
+    }
+
+    /* ===== CTA BANNERS ===== */
+    .cta-banner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-banner-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem 2rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      background-size: 200% 200%;
+      border: 2px solid rgba(52, 152, 219, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s, background-position 0.4s;
+    }
+
+    .cta-banner-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(52, 152, 219, 0.25);
+      background-position: 100% 100%;
+      color: #fff;
+    }
+
+    .cta-banner-link-alt {
+      background: linear-gradient(135deg, #2e1a1a, #3e1621, #600f0f);
+      border-color: rgba(211, 47, 47, 0.3);
+    }
+
+    .cta-banner-link-alt:hover {
+      box-shadow: 0 8px 32px rgba(211, 47, 47, 0.25);
+    }
+
+    .cta-banner-label {
+      font-size: 1.3rem;
+      font-weight: 900;
+      white-space: nowrap;
+      min-width: fit-content;
+    }
+
+    .cta-banner-desc {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .cta-banner-arrow {
+      font-size: 1.8rem;
+      font-weight: 300;
+      opacity: 0.6;
+      transition: transform 0.2s, opacity 0.2s;
+      min-width: 1.5rem;
+      text-align: right;
+    }
+
+    .cta-banner-link:hover .cta-banner-arrow {
+      transform: translateX(4px);
+      opacity: 1;
+    }
+
+    @media (max-width: 600px) {
+      .cta-banner-link {
+        flex-wrap: wrap;
+        padding: 1.25rem 1.5rem;
+      }
+      .cta-banner-desc {
+        flex-basis: 100%;
+        order: 3;
+      }
+      .cta-banner-arrow {
+        margin-left: auto;
+      }
+    }
+
+    /* ===== CLOSING ===== */
+    .closing {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      border-top: 3px solid;
+      border-image: linear-gradient(90deg, transparent, #d32f2f, transparent) 1;
+    }
+
+    .closing-lede {
+      font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+
+    .closing-cta {
+      font-size: 1.15rem;
+      margin-top: 1.25rem;
+    }
+
+    /* ===== GLOBAL REFINEMENTS ===== */
+    details {
+      margin-bottom: 0.75rem;
+    }
+
+    details[open] > p {
+      padding-inline-start: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .impact-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .press-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .precedent-section {
+        padding: 1.25rem;
+      }
+
+      .cta-banner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links-row {
+        flex-direction: column;
+      }
+    }
+
+    /* ===== LANDING FOOTER ===== */
+    .landing-footer {
+      border-top: 1px solid #dee2e6;
+      padding: 3rem 2rem 2rem;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .landing-footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-brand {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0.75rem 0 0.5rem;
+      text-align: center;
+    }
+
+    .footer-title::before,
+    .footer-title::after {
+      display: none;
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .footer-social a:hover {
+      opacity: 0.8;
+      transform: translateY(-2px);
+    }
+
+    .footer-links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .footer-col {
+      min-width: 180px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      color: var(--pico-muted-color);
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.35rem;
+    }
+
+    .footer-col a {
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .footer-legal {
+      text-align: center;
+      border-top: 1px solid var(--pico-muted-border-color);
+      padding-top: 1.5rem;
+      color: var(--pico-muted-color);
+      font-size: 0.8rem;
+    }
+
+    .footer-legal p {
+      margin: 0.25rem 0;
+    }
+  </style>
+</Base>
