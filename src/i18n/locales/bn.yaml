@@ -1,0 +1,14 @@
+# Locale strings — bn
+# Shared site strings extracted from bn/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "অ্যান্ড্রয়েডকে উন্মুক্ত রাখুন"
+description: "অ্যান্ড্রয়েডকে সবার জন্য একটি স্বাধীন ও উন্মুক্ত অ্যাপ তৈরির প্ল্যাটফর্ম হিসেবে বজায় রাখার দাবি।"
+contact_header: "যোগাযোগ"
+contact_email: "ইমেইল"
+site_problems_header: "সমস্যা"
+site_report_issues: "ওয়েবসাইটের সমস্যা রিপোর্ট করুন"
+site_disclaimer: "**দাবিত্যাগ:** এই ওয়েবসাইটটি একটি কমিউনিটি-পরিচালিত অলাভজনক উদ্যোগ। এটি শুধুমাত্র তথ্য প্রদান ও শিক্ষামূলক উদ্দেশ্যে পরিচালিত হচ্ছে।"
+site_privacy: "**গোপনীয়তা:** এই সাইট কোনো কুকি ব্যবহার করে না এবং ব্যবহারকারীদের কোনো তথ্য ট্র্যাক বা সংরক্ষণ করে না।"
+site_copyright: "**কপিরাইট:** নেই। এই কাজটি চিহ্নিত করা হয়েছে"
+open_letter_cta: "অ্যান্ড্রয়েড ডেভেলপার ভেরিফিকেশন প্রোগ্রামের প্রতিবাদ জানিয়ে লেখা আমাদের খোলা চিঠিটি পড়ুন"

@@ -1,0 +1,14 @@
+# Locale strings — ar
+# Shared site strings extracted from ar/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "أبقِ أندرويد مفتوحًا"
+description: "الدعوة إلى أندرويد كمنصة حرة و مفتوحة للجميع لبناء التطبيقات."
+contact_header: "تواصل"
+contact_email: "البريد الإلكتروني"
+site_problems_header: "مشكلات"
+site_report_issues: "الإبلاغ عن مشكلات الموقع"
+site_disclaimer: "**إخلاء مسؤولية:** هذا الموقع مبادرة غير تجارية يقودها المجتمع. يتم تشغيله لأغراض معلوماتية وتعليمية فقط."
+site_privacy: "**الخصوصية:** هذا الموقع لا يستخدم ملفات تعريف الارتباط ولا يقوم بأي تتبع أو تسجيل للمستخدمين."
+site_copyright: "**حقوق النشر:** لا يوجد. هذا العمل مصنّف"
+open_letter_cta: "اقرأ رسالتنا المفتوحة المعارضة لبرنامج التحقق من مطوري أندرويد"

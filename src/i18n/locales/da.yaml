@@ -1,0 +1,14 @@
+# Locale strings — da
+# Shared site strings extracted from da/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Keep Android Open"
+description: "Et forsvar for Android som en fri og åben platform, hvor alle kan udvikle apps."
+contact_header: "Kontakt"
+contact_email: "E-mail"
+site_problems_header: "Problemer"
+site_report_issues: "Rapporter problemer med hjemmesiden"
+site_disclaimer: "**Ansvarsfraskrivelse:** Denne hjemmeside er et fællesskabsdrevet, ikke-kommercielt initiativ. Den drives udelukkende til informations- og læringsformål."
+site_privacy: "**Privatliv:** Denne hjemmeside bruger ingen cookies og foretager hverken sporing eller logning af brugere."
+site_copyright: "**Ophavsret:** Ingen. Dette værk er licenseret under"
+open_letter_cta: "Læs vores åbne brev mod Android Developer Verification-programmet"

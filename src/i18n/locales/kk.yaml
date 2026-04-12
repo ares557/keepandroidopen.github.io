@@ -1,0 +1,14 @@
+# Locale strings — kk
+# Shared site strings extracted from kk/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Android-ды ашық сақтайық"
+description: "Android еркін әрі ашық платформа болып қала берсін, кез келген адам қосымша жасай алсын деп қолдаймыз."
+contact_header: "Байланыс"
+contact_email: "Электрондық пошта"
+site_problems_header: "Мәселелер"
+site_report_issues: "Сайт мәселелерін хабарлау"
+site_disclaimer: "**Ескерту**: Бұл сайтты қоғамдастық жүргізеді, коммерциялық мақсаты жоқ. Тек хабардар ету мен білім беру үшін жұмыс істейді."
+site_privacy: "**Құпиялылық**: Бұл сайт cookie файлдарын пайдаланбайды, пайдаланушыларды бақыламайды және деректерін жинамайды."
+site_copyright: "**Авторлық құқық**: Жоқ. Бұл жұмыс қоғамдық меншікке берілген:"
+open_letter_cta: "Android әзірлеушілерді тексеру бағдарламасына қарсы ашық хатымызды оқыңыз"

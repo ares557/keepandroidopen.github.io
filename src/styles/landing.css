@@ -1,8 +1,191 @@
+/*!
+ * @license magnet:?xt=urn:btih:8e4f440f4c65981c5bf93c76d35135ba5064d8b7&dn=apache-2.0.txt Apache-2.0
+ * Keep Android Open – Landing Page Styles
+ * Copyright 2025-2026 Keep Android Open Contributors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
     /* ===== TOPBAR ===== */
     .topbar {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
+      align-items: center;
       padding: 0.75rem 1.5rem;
+      gap: 0.75rem;
+    }
+
+    /* ===== LANGUAGE PICKER ===== */
+    .lang-picker {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .lang-picker-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--pico-muted-border-color);
+      border-radius: 0.5rem;
+      background-color: transparent;
+      color: var(--pico-color);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s, background-color 0.2s;
+      line-height: 1.3;
+      -webkit-appearance: none;
+      /* Override Pico CSS button defaults */
+      --pico-background-color: transparent;
+      --pico-border-color: var(--pico-muted-border-color);
+      --pico-color: inherit;
+    }
+
+    .lang-picker-btn:hover {
+      border-color: currentColor;
+      background-color: rgba(128, 128, 128, 0.06);
+      /* Override Pico hover states */
+      --pico-background-color: rgba(128, 128, 128, 0.06);
+    }
+
+    .lang-picker-btn:focus {
+      --pico-background-color: rgba(128, 128, 128, 0.06);
+      box-shadow: none;
+    }
+
+    .lang-picker-globe {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .lang-picker-caret {
+      font-size: 0.65rem;
+      opacity: 0.5;
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+
+    .lang-picker-btn[aria-expanded="true"] .lang-picker-caret {
+      transform: rotate(180deg);
+    }
+
+    /* Menu panel — hidden by default via opacity+visibility (no display:none, avoids Safari paint bugs) */
+    .lang-picker-menu {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: calc(100% + 0.4rem);
+      width: 210px;
+      max-height: 65vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      background: var(--pico-background-color, #fff);
+      border: 1px solid var(--pico-muted-border-color);
+      border-radius: 0.75rem;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+      padding: 0.4rem;
+      margin: 0;
+      z-index: 1000;
+      transition: opacity 0.15s ease, visibility 0.15s ease;
+      /* Force single column, prevent any flex/grid from Pico */
+      display: block !important;
+    }
+
+    [data-theme="dark"] .lang-picker-menu {
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .lang-picker-menu.is-open {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Each language row — card-like with subtle alternating texture */
+    .lang-picker-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0.75rem;
+      margin: 0;
+      font-size: 0.85rem;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--pico-color);
+      text-decoration: none;
+      border-radius: 0.4rem;
+      transition: background 0.12s ease;
+      white-space: nowrap;
+      border: none;
+    }
+
+    .lang-picker-item:nth-child(odd) {
+      background: rgba(128, 128, 128, 0.03);
+    }
+
+    .lang-picker-item:hover {
+      background: rgba(52, 152, 219, 0.1);
+      color: var(--pico-color);
+    }
+
+    [data-theme="dark"] .lang-picker-item:nth-child(odd) {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    [data-theme="dark"] .lang-picker-item:hover {
+      background: rgba(52, 152, 219, 0.15);
+    }
+
+    /* Current language highlight */
+    .lang-picker-item.lang-current {
+      font-weight: 800;
+      background: rgba(211, 47, 47, 0.06);
+      color: #d32f2f;
+    }
+
+    .lang-picker-item.lang-current:hover {
+      background: rgba(211, 47, 47, 0.1);
+    }
+
+    [data-theme="dark"] .lang-picker-item.lang-current {
+      color: #ef5350;
+      background: rgba(239, 83, 80, 0.1);
+    }
+
+    [data-theme="dark"] .lang-picker-item.lang-current:hover {
+      background: rgba(239, 83, 80, 0.15);
+    }
+
+    .lang-picker-check {
+      font-size: 0.75rem;
+      opacity: 0.6;
+      margin-left: auto;
+      padding-left: 0.5rem;
+    }
+
+    .lang-picker-item-label {
+      flex: 1;
+    }
+
+    /* Detected browser language — shown at top with separator */
+    .lang-picker-item.lang-detected {
+      border-bottom: 1px solid var(--pico-muted-border-color);
+      margin-bottom: 0.3rem;
+      padding-bottom: 0.55rem;
+      border-radius: 0.4rem 0.4rem 0 0;
+      background: rgba(52, 152, 219, 0.06);
+      font-weight: 700;
+    }
+
+    .lang-picker-item.lang-detected::after {
+      content: "\2190";
+      font-size: 0.7rem;
+      opacity: 0.45;
+      padding-left: 0.5rem;
+    }
+
+    [data-theme="dark"] .lang-picker-item.lang-detected {
+      background: rgba(52, 152, 219, 0.1);
     }
 
     /* ===== HERO ===== */

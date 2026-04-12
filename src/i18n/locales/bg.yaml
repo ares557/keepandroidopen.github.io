@@ -1,0 +1,14 @@
+# Locale strings — bg
+# Shared site strings extracted from bg/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Keep Android Open"
+description: "Движение в подкрепа на запазването на Android като безплатна и отворена платформа за изграждане на приложения от всички."
+contact_header: "Контакти"
+contact_email: "Имейл"
+site_problems_header: "Проблеми"
+site_report_issues: "Сигнал за проблеми в страницата"
+site_disclaimer: "**Отказ от правна отговорност:** Тази страница е дело на общи усилия с нетърговски цели на общността. Поддържа се единствено с информационни и образователни цели."
+site_privacy: "**Поверителност:** Тази страница не използва бисквитки и не извършва проследяване или регистриране на действията на потребителите."
+site_copyright: "**Авторско право:** Неограничено. Използваният лиценз е"
+open_letter_cta: "Прочетете нашето отворено писмо срещу програмата за проверка на разработчици в Android"

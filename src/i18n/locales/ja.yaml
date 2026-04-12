@@ -1,0 +1,14 @@
+# Locale strings — ja
+# Shared site strings extracted from ja/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Keep Android Open"
+description: "誰もがアプリを開発できる、自由で開かれたプラットフォームとしての Android を支持します。"
+contact_header: "お問い合わせ"
+contact_email: "メール"
+site_problems_header: "問題の報告"
+site_report_issues: "サイトの問題を報告"
+site_disclaimer: "**免責事項:** 本ウェブサイトは、コミュニティ主導の非営利プロジェクトです。情報提供および教育目的でのみ運営されています。"
+site_privacy: "**プライバシー:** 当サイトは Cookie を使用しておらず、ユーザーの追跡やログの記録も一切行いません。"
+site_copyright: "**著作権:** なし。本作品は次のようにマークされています："
+open_letter_cta: "Android 開発者認証プログラムに反対する私たちの公開書簡をお読みください"

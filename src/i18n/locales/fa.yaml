@@ -1,0 +1,14 @@
+# Locale strings — fa
+# Shared site strings extracted from fa/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "اندروید را باز نگه دارید!"
+description: "تلاشی برای اعلام اندروید به عنوان یک سکّوی رایگان، آزاد برای همگان که به راحتی برنامه‌های خود را بر پایهٔ آن، عرضه کنند."
+contact_header: "ارتباط"
+contact_email: "رایانامه"
+site_problems_header: "مشکلات"
+site_report_issues: "گزارش مشکلات"
+site_disclaimer: "**تکذیبیه:** این یک وبگاه با توسعهٔ جامعه و بدون تعهّد تجاری است. این وبگاه صرفاً برای اهداف آموزشی و اطّلاع‌رسانی اجرا می‌شود."
+site_privacy: "**حریم خصوصی:** این وبگاه از هیچ کوکی‌ای استفاده نمی‌کند و هیچ‌گونه پیمایشی و نگهداری‌ای از اطّلاعات کاربر صورت نمی‌گیرد."
+site_copyright: "**حقّ‌تکثیر:** هیچ. این اثر عرضه شده تحت پروانهٔ"
+open_letter_cta: "نامه سرگشاده ما علیه برنامه تأیید هویت توسعه‌دهندگان اندروید را بخوانید"

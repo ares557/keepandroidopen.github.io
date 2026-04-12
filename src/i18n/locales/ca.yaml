@@ -1,0 +1,14 @@
+# Locale strings — ca
+# Shared site strings extracted from ca/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Mantinguem Android Obert"
+description: "Defensem Android com una plataforma lliure i oberta perquè tothom hi pugui desenvolupar aplicacions."
+contact_header: "Contacte"
+contact_email: "Correu electrònic"
+site_problems_header: "Problemes"
+site_report_issues: "Informar de problemes del lloc"
+site_disclaimer: "**Avís legal:** Aquest lloc web és una iniciativa comunitària no comercial. S’opera exclusivament amb finalitats informatives i educatives."
+site_privacy: "**Privadesa:** Aquest lloc no utilitza galetes i no fa cap seguiment ni registre d’usuaris."
+site_copyright: "**Copyright:** Cap. Aquesta obra està marcada"
+open_letter_cta: "Llegiu la nostra carta oberta contra el programa de verificació de desenvolupadors d'Android"

@@ -1,0 +1,14 @@
+# Locale strings — pl
+# Shared site strings extracted from pl/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Obrońmy otwartość Androida"
+description: "Wspieramy Androida jako wolną, otwartą platformę, na której każdy może tworzyć aplikacje."
+contact_header: "Kontakt"
+contact_email: "E-mail"
+site_problems_header: "Problemy"
+site_report_issues: "Zgłoś problemy ze stroną"
+site_disclaimer: "**Zastrzeżenie:** Ta strona internetowa jest społecznościowym, niekomercyjnym przedsięwzięciem. Jest prowadzona wyłącznie w celach informacyjnych i edukacyjnych."
+site_privacy: "**Prywatność:** Ta strona nie używa plików cookie i nie prowadzi żadnego śledzenia ani logowania użytkowników."
+site_copyright: "**Prawa autorskie:** Brak. To dzieło jest oznaczone"
+open_letter_cta: "Przeczytaj nasz list otwarty przeciwko programowi weryfikacji deweloperów Androida"

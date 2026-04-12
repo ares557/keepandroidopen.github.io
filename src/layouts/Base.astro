@@ -48,7 +48,13 @@ const ogImage = lockdownImages.length > 0
 
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css"> -->
   <style is:global>
-  
+  /*!
+   * @license magnet:?xt=urn:btih:8e4f440f4c65981c5bf93c76d35135ba5064d8b7&dn=apache-2.0.txt Apache-2.0
+   * Keep Android Open – Base Styles
+   * Copyright 2025-2026 Keep Android Open Contributors
+   * SPDX-License-Identifier: Apache-2.0
+   */
+
     main {
       max-width: 1200px;
       margin-left: auto;
@@ -375,6 +381,12 @@ const ogImage = lockdownImages.length > 0
 <body>
   <slot />
   <script is:inline>
+    /**
+     * @license magnet:?xt=urn:btih:8e4f440f4c65981c5bf93c76d35135ba5064d8b7&dn=apache-2.0.txt Apache-2.0
+     * Keep Android Open – Hash-based Details Opener
+     * Copyright 2025–2026 Keep Android Open Contributors
+     * SPDX-License-Identifier: Apache-2.0
+     */
     function openDetailsForHash() {
       var hash = location.hash;
       if (!hash) return;
@@ -389,6 +401,7 @@ const ogImage = lockdownImages.length > 0
     }
     openDetailsForHash();
     window.addEventListener('hashchange', openDetailsForHash);
+    // @license-end
   </script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+# Locale strings — el
+# Shared site strings extracted from el/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Διατηρήστε το Android ανοιχτό"
+description: "Υπερασπίζοντας το Android ως μία ελεύθερη, ανοιχτή πλατφόρμα για την οποία όλοι να μπορούν να δημιουργούν εφαρμογές."
+contact_header: "Επικοινωνία"
+contact_email: "Ηλεκτρονικό ταχυδρομείο"
+site_problems_header: "Προβλήματα"
+site_report_issues: "Αναφέρετε ζητήματα στην ιστοσελίδα"
+site_disclaimer: "**Προσοχή:** Αυτόν τον ιστότοπο τον έχει αναλάβει μη κερδοσκοπικά η κοινότητα. Λειτουργεί μόνο για σκοπούς εκπαίδευσης και πληροφόρησης."
+site_privacy: "**Ιδιωτικότητα:** Αυτός ο ιστότοπος δεν χρησιμοποιεί cookies και δεν επιχειρεί καμία παρακολούθηση ή καταγραφή."
+site_copyright: "**Πνευματικά δικαιώματα:** Κανένα. Αυτό το έργο φέρει τη σήμανση"
+open_letter_cta: "Διαβάστε την ανοιχτή επιστολή μας κατά του προγράμματος επαλήθευσης προγραμματιστών Android"

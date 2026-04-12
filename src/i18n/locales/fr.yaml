@@ -1,0 +1,50 @@
+# Landing page strings — French
+# Only override keys that have been translated; missing keys fall back to en.yaml.
+
+title: "Garder Android ouvert"
+description: "Plaidoyer pour Android en tant que plateforme libre et ouverte permettant à tous de développer des applications."
+
+hero_lede: "Votre téléphone est sur le point de ne plus vous appartenir."
+hero_countdown_label: "jours avant le verrouillage"
+hero_kicker: "Toutes les apps. Tous les appareils. Aucune possibilité de refus."
+
+what_heading: "Ce que Google prépare"
+what_registration: "L'inscription exige :"
+what_req_fee: "Payer des frais à Google"
+what_req_terms: "Accepter les conditions générales de Google"
+what_req_id: "Fournir une pièce d'identité officielle"
+what_req_signing: "Télécharger la preuve de votre clé de signature privée"
+what_req_appids: "Lister tous les identifiants d'applications actuels et futurs"
+
+impact_heading: "Qui est touché"
+impact_you_heading: "Vous"
+impact_dev_heading: "Les développeurs indépendants"
+impact_gov_heading: "Les gouvernements et la société civile"
+
+objections_heading: "Mais attendez, n'est-ce pas..."
+act_heading: "Agissez"
+voices_heading: "Ce qu'ils en disent"
+
+closing_line1: "Vous avez acheté votre téléphone."
+closing_line2: "C'est à vous de décider ce qui y tourne."
+closing_cta: "Partagez cette page. Ne vous inscrivez pas. Ne laissez pas Android se fermer."
+
+# Shared site strings (from existing fr/index.md frontmatter)
+site_disclaimer: "**Avertissement :** Ce site web est une initiative communautaire à but non lucratif. Il est exploité uniquement à des fins d'information et d'éducation."
+site_privacy: "**Confidentialité :** Ce site n'utilise aucun cookie et n'effectue aucun suivi ni enregistrement des utilisateurs."
+site_copyright: "**Droits d'auteur :** Aucun. Cette œuvre est sous licence"
+contact_header: "Contact"
+contact_email: "Email"
+site_problems_header: "Problèmes"
+site_report_issues: "Signaler un problème sur le site"
+open_letter_cta: "Lisez notre lettre ouverte contre le programme de vérification des développeurs Android"
+
+footer_get_involved: "Participez"
+footer_take_action: "Agir et ressources"
+footer_open_letter: "Lettre ouverte"
+footer_add_banner: "Ajouter le compte à rebours"
+footer_sign_petition: "Signer la pétition"
+footer_contact: "Contact"
+footer_report_issues: "Signaler un problème"
+footer_translations: "Traductions"
+footer_help_translate: "Aider à traduire"

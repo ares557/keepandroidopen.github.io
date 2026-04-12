@@ -1,0 +1,14 @@
+# Locale strings — hi
+# Shared site strings extracted from hi/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "एंड्रॉइड को एक खुला प्लेटफार्म रखें"
+description: "एंड्रॉइड को एक स्वतंत्र, खुले प्लेटफ़ॉर्म के रूप में बनाए रखने का प्रयास, जहाँ सभी ऐप बना सकें।"
+contact_header: "संपर्क"
+contact_email: "ईमेल"
+site_problems_header: "समस्याएँ"
+site_report_issues: "साइट की समस्या रिपोर्ट करें"
+site_disclaimer: "**अस्वीकरण:** यह वेबसाइट एक सामुदायिक, गैर-व्यावसायिक प्रयास है। यह केवल सूचनात्मक और शैक्षिक उद्देश्यों के लिए संचालित है।"
+site_privacy: "**गोपनीयता:** यह साइट कोई कुकी उपयोग नहीं करती और न ही किसी उपयोगकर्ता को ट्रैक या लॉग करती है।"
+site_copyright: "**कॉपीराइट:** कोई नहीं। यह कार्य चिह्नित है"
+open_letter_cta: "एंड्रॉइड डेवलपर सत्यापन कार्यक्रम के विरोध में हमारा खुला पत्र पढ़ें"

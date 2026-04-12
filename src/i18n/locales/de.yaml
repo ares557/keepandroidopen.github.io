@@ -1,0 +1,50 @@
+# Landing page strings — German
+# Only override keys that have been translated; missing keys fall back to en.yaml.
+
+title: "Keep Android Open"
+description: "Befürwortung von Android als kostenlose und offene Plattform für jeden, um Apps zu entwickeln."
+
+hero_lede: "Dein Telefon gehört bald nicht mehr dir."
+hero_countdown_label: "Tage bis zur Sperrung"
+hero_kicker: "Jede App. Jedes Gerät. Weltweit. Ohne Opt-out."
+
+what_heading: "Was Google vorhat"
+what_registration: "Die Registrierung erfordert:"
+what_req_fee: "Eine Gebühr an Google zahlen"
+what_req_terms: "Googles Geschäftsbedingungen akzeptieren"
+what_req_id: "Einen amtlichen Ausweis vorlegen"
+what_req_signing: "Den Nachweis des privaten Signaturschlüssels hochladen"
+what_req_appids: "Alle aktuellen und zukünftigen Anwendungskennungen auflisten"
+
+impact_heading: "Wer darunter leidet"
+impact_you_heading: "Du"
+impact_dev_heading: "Unabhängige Entwickler"
+impact_gov_heading: "Regierungen & Zivilgesellschaft"
+
+objections_heading: "Aber Moment, ist das nicht..."
+act_heading: "Wehre dich"
+voices_heading: "Was sie sagen"
+
+closing_line1: "Du hast dein Telefon gekauft."
+closing_line2: "Du solltest entscheiden, was darauf läuft."
+closing_cta: "Teile diese Seite. Melde dich nicht an. Lass Android nicht schließen."
+
+# Shared site strings (from existing de/index.md frontmatter)
+site_disclaimer: "**Haftungsausschluss**: Diese Website ist eine gemeinschaftliche, nicht-kommerzielle Initiative. Sie dient ausschließlich Informations- und Bildungszwecken."
+site_privacy: "**Datenschutz**: Diese Website verwendet keine Cookies und führt weder Tracking noch Nutzerprotokollierung durch."
+site_copyright: "**Urheberrechte**: Keine. Dieses Werk steht unter der Lizenz"
+contact_header: "Kontakt"
+contact_email: "E-Mail"
+site_problems_header: "Probleme"
+site_report_issues: "Melden Sie ein Problem auf der Website"
+open_letter_cta: "Lesen Sie unseren offenen Brief gegen das Android-Entwicklerverifizierungsprogramm"
+
+footer_get_involved: "Mitmachen"
+footer_take_action: "Aktiv werden & Ressourcen"
+footer_open_letter: "Offener Brief"
+footer_add_banner: "Countdown-Banner hinzufügen"
+footer_sign_petition: "Petition unterschreiben"
+footer_contact: "Kontakt"
+footer_report_issues: "Probleme melden"
+footer_translations: "Übersetzungen"
+footer_help_translate: "Bei der Übersetzung helfen"

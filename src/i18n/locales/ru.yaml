@@ -1,0 +1,14 @@
+# Locale strings — ru
+# Shared site strings extracted from ru/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Сохраним Android открытым"
+description: "В защиту Android как свободной и открытой платформы, на которой каждый может создавать приложения."
+contact_header: "Контакты"
+contact_email: "Email"
+site_problems_header: "Проблемы"
+site_report_issues: "Сообщить об ошибке"
+site_disclaimer: "**Отказ от ответственности:** Этот сайт - некоммерческий общественный проект. Он создан исключительно в информационных и образовательных целях."
+site_privacy: "**Конфиденциальность:** Сайт не использует cookies и не отслеживает пользователей."
+site_copyright: "**Авторские права:** Отсутствуют. Этот материал распространяется под"
+open_letter_cta: "Прочитайте наше открытое письмо против программы верификации разработчиков Android"

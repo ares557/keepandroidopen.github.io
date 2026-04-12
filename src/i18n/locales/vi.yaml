@@ -1,0 +1,14 @@
+# Locale strings — vi
+# Shared site strings extracted from vi/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Giữ Android luôn mở"
+description: "Vận động để Android vẫn là một nền tảng tự do và mở cho mọi người xây dựng ứng dụng."
+contact_header: "Liên hệ"
+contact_email: "Email"
+site_problems_header: "Sự cố"
+site_report_issues: "Báo cáo lỗi trang web"
+site_disclaimer: "**Tuyên bố miễn trừ:** Trang web này là một dự án phi thương mại do cộng đồng thực hiện. Nó chỉ được vận hành cho mục đích thông tin và giáo dục."
+site_privacy: "**Quyền riêng tư:** Trang web này không sử dụng cookie và không thực hiện theo dõi hay ghi log người dùng."
+site_copyright: "**Bản quyền:** Không có. Tác phẩm này được đánh dấu"
+open_letter_cta: "Đọc thư ngỏ phản đối chương trình Xác minh Nhà phát triển Android"

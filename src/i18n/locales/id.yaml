@@ -1,0 +1,14 @@
+# Locale strings — id
+# Shared site strings extracted from id/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Jaga Android Tetap Terbuka"
+description: "Mendorong Android sebagai platform gratis dan terbuka bagi semua orang untuk mengembangkan aplikasi."
+contact_header: "Kontak"
+contact_email: "Pos-el"
+site_problems_header: "Permasalahan"
+site_report_issues: "Laporkan masalah situs"
+site_disclaimer: "**Perhatian:** Situs web ini merupakan inisiatif nonkomersial yang dikelola oleh komunitas. Situs ini dioperasikan semata-mata untuk tujuan informatif dan pendidikan."
+site_privacy: "**Privasi:** Situs ini tidak menggunakan cookie dan tidak melakukan pelacakan atau pencatatan aktivitas pengguna."
+site_copyright: "**Hak Cipta:** Tidak ada. Karya ini ditandai"
+open_letter_cta: "Baca surat terbuka kami yang menentang program verifikasi pengembang Android"

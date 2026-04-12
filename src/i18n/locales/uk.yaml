@@ -1,0 +1,14 @@
+# Locale strings — uk
+# Shared site strings extracted from uk/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Збережемо Android відкритим"
+description: "Виступаємо за те, щоб Android залишався вільною, відкритою платформою, на якій кожен може створювати застосунки."
+contact_header: "Контакти"
+contact_email: "Електронна пошта"
+site_problems_header: "Проблеми"
+site_report_issues: "Повідомити про проблеми з сайтом"
+site_disclaimer: "**Відмова від відповідальності:** Цей вебсайт є некомерційним проєктом, керованим спільнотою. Він функціонує виключно в інформаційних та освітніх цілях."
+site_privacy: "**Конфіденційність:** Цей сайт не використовує файли cookie та не відстежує і не реєструє дії користувачів."
+site_copyright: "**Авторське право:** Відсутнє. Ця робота позначена"
+open_letter_cta: "Прочитайте наш відкритий лист проти програми верифікації розробників Android"

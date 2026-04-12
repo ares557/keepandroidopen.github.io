@@ -1,0 +1,14 @@
+# Locale strings — it
+# Shared site strings extracted from it/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Keep Android Open"
+description: "Promuovere Android come piattaforma libera e aperta su cui tutti possono sviluppare applicazioni."
+contact_header: "Contatto"
+contact_email: "E-mail"
+site_problems_header: "Problemi"
+site_report_issues: "Segnala problemi del sito web"
+site_disclaimer: "**Dichiarazione di non responsabilità:** Questo sito web è un'iniziativa non commerciale gestita dalla comunità. È gestito esclusivamente a scopo informativo e didattico."
+site_privacy: "**Privacy:** Questo sito web non utilizza cookie e non effettua alcun tracciamento o registrazione degli utenti."
+site_copyright: "**Diritti d'autore:** Nessuno. Quest'opera è soggetta alla licenza."
+open_letter_cta: "Leggi la nostra lettera aperta contro il programma di verifica degli sviluppatori Android"

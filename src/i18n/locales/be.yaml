@@ -1,0 +1,14 @@
+# Locale strings — be
+# Shared site strings extracted from be/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Захаваем Android адкрытым"
+description: "Захаваем Android яе бясплатную адкрытую платформу, на якой кожны зможа ствараць праграмы."
+contact_header: "Кантакты"
+contact_email: "Email"
+site_problems_header: "Праблемы"
+site_report_issues: "Паведаміць пра праблемы сайта"
+site_disclaimer: "**Заўвага:** Гэты сайт кіруецца супольнасцю. Ён створаны выключна ў інфармацыйных і навучальных мэтах."
+site_privacy: "**Прыватнасць:** Гэты сайт не выкарыстоўвае кукі і не адсочвае карыстальнікаў ці аўтарызацыю."
+site_copyright: "**Аўтарскае права:** Няма. Гэты матэрыял распаўсюджваецца пад"
+open_letter_cta: "Прачытайце нашы адкрыты ліст супраць праграмы верыфікацыі Android распрацоўшчыкаў"

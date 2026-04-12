@@ -1,0 +1,14 @@
+# Locale strings — hu
+# Shared site strings extracted from hu/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Keep Android Open"
+description: "Az Android támogatása, mint egy szabad, nyílt platform, ahol mindenki tud alkalmazást fejleszteni."
+contact_header: "Kapcsolat"
+contact_email: "E-mail"
+site_problems_header: "Problémák"
+site_report_issues: "A webhely problémáinak jelentése"
+site_disclaimer: "**Nyilatkozat:** Ez a weboldal egy közösség által fenntartott, nem kereskedelmi vállalkozás. Kizárólag tájékoztató és oktatási célból működik."
+site_privacy: "**Adatvédelem:** Ez a weboldal nem használ cookie-kat, és nem végez felhasználói nyomonkövetést vagy naplózást."
+site_copyright: "**Szerzői jog:** Nincs. Ez a munka"
+open_letter_cta: "Olvasd el nyílt levelünket az Android Fejlesztő Ellenőrzés program ellen"

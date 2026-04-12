@@ -1,0 +1,14 @@
+# Locale strings — tr
+# Shared site strings extracted from tr/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Android Açık Kalsın"
+description: "Android'in herkesin üzerinde uygulama geliştirebileceği özgür ve açık bir platform olmasını savunuyoruz."
+contact_header: "İrtibat"
+contact_email: "E-posta"
+site_problems_header: "Sorunlar"
+site_report_issues: "Site Sorunlarını Raporlayın"
+site_disclaimer: "**Disclaimer**: Bu site kâr amacı gütmez ve topluluk tarafından yönetilen bir girişimdir. Sadece bigilendirme ve eğitim amaçları için bulunur."
+site_privacy: "**Gizlilik**: Bu site hiçbir çerez kullanmaz ve kullanıcıları takip etmez veya kaydetmez."
+site_copyright: "**Telif Hakkı**: Telif hakkı yoktur. Bu çalışma kamu malıdır:"
+open_letter_cta: "Android Geliştirici Doğrulama programına karşı açık mektubumuzu okuyun"

@@ -1,0 +1,14 @@
+# Locale strings — zh-TW
+# Shared site strings extracted from zh-TW/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "保持 Android 開放"
+description: "提倡 Android 作為一個自由、開放的平台，讓人人都能在其之上開發應用程式。"
+contact_header: "聯絡方式"
+contact_email: "電子郵件"
+site_problems_header: "問題"
+site_report_issues: "回報網站問題"
+site_disclaimer: "**免責聲明:** 本站是一個由社群推動的非商業性專案。僅供資訊與教育用途。"
+site_privacy: "**隱私權:** 本站不使用 Cookie，也不會追蹤或記錄使用者。"
+site_copyright: "**版權:** 公有領域。本網站使用"
+open_letter_cta: "閱讀我們反對 Android 開發者驗證計畫的公開信"

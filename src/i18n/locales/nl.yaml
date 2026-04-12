@@ -1,0 +1,14 @@
+# Locale strings — nl
+# Shared site strings extracted from nl/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Houd Android Open"
+description: "Pleitend voor Android als vrij, open platform waarop iedereen apps kan bouwen."
+contact_header: "Contact"
+contact_email: "E-mail"
+site_problems_header: "Problemen"
+site_report_issues: "Meld problemen met deze site"
+site_disclaimer: "**Disclaimer:** Deze website wordt onderhouden door een niet-commerciële gemeenschap en is uitsluitend bedoeld voor informatieve en educatieve doeleinden."
+site_privacy: "**Privacy:** Deze site gebruikt geen cookies en doet niet aan gebruikers-tracking of logging."
+site_copyright: "**Copyright:** Geen. Dit werk is beschikbaar onder"
+open_letter_cta: "Lees de open brief over ons verzet tegen Android Developer Verification"

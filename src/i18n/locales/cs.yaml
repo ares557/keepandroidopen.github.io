@@ -1,0 +1,14 @@
+# Locale strings — cs
+# Shared site strings extracted from cs/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Keep Android Open"
+description: "Obhajoba Androidu jako svobodné, otevřené platformy, na které může každý tvořit své aplikace."
+contact_header: "Kontakt"
+contact_email: "Email"
+site_problems_header: "Nahlášení chyb"
+site_report_issues: "Nahlásit problémy se stránkou"
+site_disclaimer: "**Vyloučení odpovědnosti:** Tato stránka je komunitním, nekomerčním projektem. Je provozována výlučně pro informační a vzdělávací účely."
+site_privacy: "**Soukromí:** Tato stránka nepoužívá žádné cookies a neprovozuje žádné sledování nebo logování uživatelů."
+site_copyright: "**Copyright:** Žádný. Toto dílo je označeno"
+open_letter_cta: "Přečtěte si náš otevřený dopis proti programu ověřování vývojářů Androidu"

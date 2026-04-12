@@ -1,0 +1,14 @@
+# Locale strings — tl
+# Shared site strings extracted from tl/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Panatilihing Bukas ang Android"
+description: "Isinusulong ang Android bilang isang libre at bukas na plataporma kung saan kahit sino ay maaaring lumikha ng mga app."
+contact_header: "Konkakin"
+contact_email: "Email"
+site_problems_header: "Mga Problema"
+site_report_issues: "Mag-ulat ng Mga Isyu sa Site"
+site_disclaimer: "**Disclaimer:** Ang website na ito ay isang komunidad na pinapatakbo at walang layuning commercial. Ito ay ginagamit para sa mga layuning pang-impormasyon at pang-edukasyon lamang."
+site_privacy: "**Pribasiya:** Ang site na ito ay walang cookies at hindi nagta-track o nagla-log ng mga gumagamit."
+site_copyright: "**Copyright:** Wala. Ang proyektong ito ay markado."
+open_letter_cta: "Basahin ang aming open letter na tumututol sa programa ng Android Developer Verification"

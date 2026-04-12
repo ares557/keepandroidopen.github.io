@@ -1,0 +1,14 @@
+# Locale strings — he
+# Shared site strings extracted from he/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "תשאירו את אנדרואיד פתוחה"
+description: "קידום אנדרואיד כפלטפורמה חופשית ופתוחה שכולם יכולים לפתח עליה."
+contact_header: "יצירת קשר"
+contact_email: "אימייל"
+site_problems_header: "בעיות באתר"
+site_report_issues: "דיווח על בעיות באתר"
+site_disclaimer: "**הבהרה:** האתר הזה הוא יוזמה קהילתית ללא מטרות רווח. הוא מופעל למטרות מידע וחינוך בלבד."
+site_privacy: "**פרטיות:** האתר אינו משתמש בעוגיות (Cookies) ואינו עוקב או מתעד משתמשים."
+site_copyright: "**זכויות יוצרים:** אין. היצירה הזאת"
+open_letter_cta: "קראו את המכתב הפתוח שלנו נגד תוכנית אימות המפתחים של אנדרואיד"

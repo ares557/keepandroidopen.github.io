@@ -1,0 +1,14 @@
+# Locale strings — fi
+# Shared site strings extracted from fi/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Keep Android Open"
+description: "Kannatamme Androidia vapaana, avoimena alustana, jolle kaikki voivat rakentaa sovelluksia."
+contact_header: "Yhteys"
+contact_email: "Sähköposti"
+site_problems_header: "Ongelmat"
+site_report_issues: "Ilmoita sivuston ongelmista"
+site_disclaimer: "**Vastuuvapaus:** Tämä verkkosivusto on yhteisövetoisesti toteutettu epäkaupallinen hanke. Se toimii yksinomaan tiedotus- ja koulutustarkoituksissa."
+site_privacy: "**Tietosuoja:** Tämä sivusto ei käytä evästeitä eikä seuraa tai kirjaa käyttäjien toimintaa."
+site_copyright: "**Tekijänoikeus:** Ei mitään. Tämä työ on merkitty"
+open_letter_cta: "Lue avoin kirjeemme, jossa vastustamme Android-kehittäjien vahvistusohjelmaa"

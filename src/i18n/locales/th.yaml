@@ -1,0 +1,14 @@
+# Locale strings — th
+# Shared site strings extracted from th/index.md frontmatter.
+# Landing-specific keys will fall back to en.yaml until translated.
+
+title: "Keep Android Open"
+description: "รณรงค์เพื่อให้ Android ยังคงเป็นแพลตฟอร์มที่เปิดกว้างและอิสระสำหรับทุกคนในการพัฒนาแอป"
+contact_header: "ติดต่อ"
+contact_email: "อีเมล"
+site_problems_header: "ปัญหาเว็บไซต์"
+site_report_issues: "รายงานปัญหาเว็บไซต์"
+site_disclaimer: "**ข้อจำกัดความรับผิดชอบ:** เว็บไซต์นี้เป็นโครงการที่ขับเคลื่อนโดยชุมชนและไม่แสวงหาผลกำไร จัดทำขึ้นเพื่อวัตถุประสงค์ด้านข้อมูลและการศึกษาเท่านั้น"
+site_privacy: "**ความเป็นส่วนตัว:** เว็บไซต์นี้ไม่ใช้คุกกี้ และไม่มีการติดตามหรือบันทึกข้อมูลผู้ใช้งาน"
+site_copyright: "**ลิขสิทธิ์:** ไม่มี งานชิ้นนี้ถูกเผยแพร่"
+open_letter_cta: "อ่านจดหมายเปิดผนึกของเราที่คัดค้านโครงการยืนยันตัวตนนักพัฒนา Android"

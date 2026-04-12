@@ -1,6 +1,6 @@
 export const languages = {
   // English (default)
-  "en": { label: "English", path: "/" },
+  "en": { label: "English", path: "/en/" },
 
   // Western European – Romance
   "fr": { label: "Français", path: "/fr/" },
