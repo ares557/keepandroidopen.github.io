@@ -569,6 +569,13 @@
       will-change: transform;
     }
 
+    /* Pure CSS hover pause — no JS needed, no animation jump */
+    @media (hover: hover) {
+      .ticker:hover .ticker-track {
+        animation-play-state: paused;
+      }
+    }
+
     .ticker-half {
       display: flex;
       gap: 0.75rem;

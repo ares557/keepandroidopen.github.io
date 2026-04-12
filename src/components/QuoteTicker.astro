@@ -2,8 +2,8 @@
 /**
  * Infinite horizontally scrolling ticker using CSS animation.
  * Two copies of the content sit side-by-side and translate continuously.
- * The animation is pure CSS (translateX) so it runs even if JS is delayed.
- * JS handles: pause on hover/touch, resume, and per-card colors.
+ * Hover pause is pure CSS (:hover) to avoid JS-induced animation jumps.
+ * JS handles: touch pause with 10s resume, and per-card colors.
  */
 interface Props {
   direction?: 'left' | 'right';
@@ -38,8 +38,8 @@ const actualDuration = Math.round(jitter);
  * SPDX-License-Identifier: Apache-2.0
  */
 (function() {
-  if (window.__tickerV3) return;
-  window.__tickerV3 = true;
+  if (window.__tickerV4) return;
+  window.__tickerV4 = true;
 
   var TOUCH_PAUSE_MS = 10000;
   var PALETTE = [
@@ -67,27 +67,17 @@ const actualDuration = Math.round(jitter);
       card.style.setProperty('--tc-s', p.s + '%');
     });
 
-    // Pause/resume for each ticker
+    // Touch-only pause (mouse hover is handled by pure CSS)
     document.querySelectorAll('.ticker').forEach(function(el) {
       var track = el.querySelector('.ticker-track');
       if (!track) return;
-
       var touchTimer = null;
 
-      // Mouse: pause on enter, resume on leave
-      el.addEventListener('pointerenter', function(e) {
-        if (e.pointerType === 'mouse') track.style.animationPlayState = 'paused';
-      });
-      el.addEventListener('pointerleave', function(e) {
-        if (e.pointerType === 'mouse') track.style.animationPlayState = 'running';
-      });
-
-      // Touch: pause for 10s
       el.addEventListener('touchstart', function() {
         track.style.animationPlayState = 'paused';
         if (touchTimer) clearTimeout(touchTimer);
         touchTimer = setTimeout(function() {
-          track.style.animationPlayState = 'running';
+          track.style.animationPlayState = '';
         }, TOUCH_PAUSE_MS);
       }, {passive: true});
     });
